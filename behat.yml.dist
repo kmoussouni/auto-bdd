@@ -1,0 +1,19 @@
+default:
+    suites:
+        default:
+            paths: [features]
+            contexts:
+                - App\Tests\Behat\FeatureContext
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: config/bootstrap.php
+            kernel:
+                class: App\Kernel
+                path: src/Kernel.php
+                environment: test
+                debug: true
+        Behat\MinkExtension:
+            base_url: "http://web:80"   # ou http://localhost:8080 si tu lances en local sans nginx proxy
+            sessions:
+                symfony:
+                    symfony: ~
